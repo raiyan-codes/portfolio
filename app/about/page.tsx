@@ -46,13 +46,12 @@ export default function About() {
         return (
           <div className="flex flex-col items-start">
             <div className="flex items-center mb-4">
-            <img src="/cs_icons/nyulogo.jpg" alt="NYU Logo" className="w-16.5 h-8 mr-2" />
-    <p className="text-lg"> New York University</p>
-      </div>
-      <div className="flex items-center">
-      <img src="/cs_icons/stuy.jpg" alt="Stuyvesant High School Logo" className="w-24 h-8 mr-2" />
-        <p className="text-lg"> Stuyvesant High School</p>
-
+              <img src="/cs_icons/nyulogo.jpg" alt="NYU Logo" className="w-16 h-8 mr-2" />
+              <p className="text-lg"> New York University</p>
+            </div>
+            <div className="flex items-center mb-4">
+              <img src="/cs_icons/stuy.jpg" alt="Stuyvesant High School Logo" className="w-16 h-8 mr-2" />
+              <p className="text-lg"> Stuyvesant High School</p>
             </div>
             <div className="my-8">
               <Link href="/path-to-your-resume.pdf">
@@ -75,12 +74,17 @@ export default function About() {
         );
       case "sportshighlights":
         return (
-          <div>
-            <Link href="/sportshighlights">
-              <button className="px-4 py-2 text-sm text-black bg-white rounded-full">
-                View Sports Highlights
-              </button>
-            </Link>
+          <div className="flex flex-col items-start">
+            <img
+              src="/tkdgroup.jpg"
+              alt="Taekwondo Group"
+              className="w-full md:w-2/3 h-48 object-cover rounded-lg shadow-lg mb-4"
+            />
+            <video
+              src="/tkd.mov"
+              className="w-full md:w-2/3 object-cover rounded-lg shadow-lg mb-4"
+              controls
+            />
           </div>
         );
       default:
@@ -107,12 +111,20 @@ export default function About() {
         </ul>
       </nav>
       <div className="max-w-6xl mx-auto text-center text-zinc-100 animate-fade-in">
-        <h1 className="text-2xl font-bold sm:text-3xl md:text-4xl my-4 text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About Me</h1>
+        <h1 className="text-2xl font-bold sm:text-3xl md:text-4xl my-4 text-center">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          About Me
+        </h1>
         <div className="flex flex-col md:flex-row items-start md:items-start gap-8">
           <img
             src="/headshot.jpg"
             alt="Raiyan"
-            className="w-full md:w-1/3 object-cover rounded-lg shadow-lg"
+            className={`w-full ${activeTab === 'sportshighlights' ? 'hidden' : 'md:w-1/3'} object-cover rounded-lg shadow-lg`}
+          />
+          <img
+            src="/tkdsolo.jpg"
+            alt="Taekwondo Solo"
+            className={`w-full ${activeTab === 'sportshighlights' ? 'md:w-1/3' : 'hidden'} object-cover rounded-lg shadow-lg`}
           />
           <div className="flex flex-col items-center md:items-start text-left md:text-left">
             <p className="text-base mb-8">
