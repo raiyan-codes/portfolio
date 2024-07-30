@@ -75,16 +75,9 @@ export default function About() {
       case "sportshighlights":
         return (
           <div className="flex flex-col items-start">
-            <img
-              src="/tkdgroup.jpg"
-              alt="Taekwondo Group"
-              className="w-full md:w-2/3 h-48 object-cover rounded-lg shadow-lg mb-4"
-            />
-            <video
-              src="/tkd.mov"
-              className="w-full md:w-2/3 object-cover rounded-lg shadow-lg mb-4"
-              controls
-            />
+            <button className="px-4 py-2 text-sm text-white bg-black rounded-full">
+              Highlights posted soon!
+            </button>
           </div>
         );
       default:
