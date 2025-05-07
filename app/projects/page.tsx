@@ -1,7 +1,15 @@
 // app/projects/page.tsx
-import Link from "next/link";
 import Image from "next/image";
+import { Metadata } from "next";
+import { Navigation } from "../components/nav";
 import Particles from "../components/particles";
+import { Card } from "../components/card";
+import { ArrowUpRight } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Projects | Raiyan Khan",
+  description: "Explore my latest software engineering projects",
+};
 
 const projects = [
   {
@@ -9,62 +17,111 @@ const projects = [
     description:
       "A high-level simulator for a 64-bit RISC CPU in C, inspired by an early MIPS processor, focusing on integer registers and instructions.",
     image: "/cpu.jpg",
+    link: "https://github.com",
+    tags: ["C", "Assembly", "RISC"]
   },
   {
     title: "Combat Sports Sparring Timer",
     description:
       "A timer app that offers customizable time options for different martial art forms.",
     image: "/timer.jpg",
+    link: "https://github.com",
+    tags: ["React", "JavaScript"]
+  },
+  {
+    title: "Portfolio Website",
+    description: "The responsive, modern portfolio website you're currently viewing.",
+    image: "/portfolio.jpg",
+    link: "https://github.com",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"]
   },
   {
     title: "Incoming Project",
     description: "Stay tuned for more exciting projects!",
     image: "/incoming.jpg",
-  },
+    tags: ["Coming Soon"]
+  }
 ];
 
-const ProjectsPage = () => {
+export default function ProjectsPage() {
   return (
-    <div className="flex flex-col items-center justify-start w-screen min-h-screen overflow-hidden bg-gradient-to-tl from-navy via-navy to-navy">
-      <nav className="mt-10 mb-9 animate-fade-in">
-        <ul className="flex items-center justify-center gap-4">
-          <Link href="/" className="text-sm duration-500 text-zinc-500 hover:text-zinc-300">
-            Home
-          </Link>
-          <Link href="/projects" className="text-sm duration-500 text-zinc-500 hover:text-zinc-300">
+    <div className="relative">
+      <Navigation />
+      <div className="px-6 pt-32 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-40 lg:pt-48">
+        <div className="max-w-2xl mx-auto lg:mx-0">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
             Projects
-          </Link>
-          <Link href="/about" className="text-sm duration-500 text-zinc-500 hover:text-zinc-300">
-            About
-          </Link>
-          <Link href="/contact" className="text-sm duration-500 text-zinc-500 hover:text-zinc-300">
-            Contact
-          </Link>
-        </ul>
-      </nav>
-      <div className="max-w-6xl mx-auto text-center text-zinc-100 animate-fade-in">
-        <h1 className="text-2xl font-bold sm:text-3xl md:text-4xl my-4 text-center">
-          My Projects
-        </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div key={index} className="bg-zinc-800 rounded-lg p-6 shadow-lg">
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={500}
-                height={300}
-                className="rounded-lg mb-4"
-              />
-              <h2 className="text-xl font-bold mb-2">{project.title}</h2>
-              <p className="text-zinc-400">{project.description}</p>
-            </div>
+          </h1>
+          <p className="mt-4 text-zinc-400">
+            A collection of projects I've built to showcase my skills and interests.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2">
+          {projects.slice(0, 2).map((project, i) => (
+            <Card
+              key={i}
+              href={project.link}
+              className="relative overflow-hidden group"
+            >
+              <div className="relative z-10 flex flex-col p-6 h-full">
+                <h2 className="mt-2 text-xl font-bold text-zinc-100 group-hover:text-white">
+                  {project.title}
+                </h2>
+                <p className="mt-2 text-sm text-zinc-400 group-hover:text-zinc-300">
+                  {project.description}
+                </p>
+                <div className="flex gap-2 mt-4 flex-wrap">
+                  {project.tags.map((tag, i) => (
+                    <span key={i} className="px-2 py-1 text-xs rounded-full bg-zinc-800 text-zinc-300">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                {project.link && (
+                  <div className="flex items-center gap-1 mt-4 text-zinc-400 group-hover:text-zinc-300">
+                    <span className="text-sm">View Project</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </div>
+                )}
+              </div>
+            </Card>
+          ))}
+        </div>
+        
+        <div className="grid grid-cols-1 gap-4 mx-auto sm:grid-cols-2 lg:grid-cols-3">
+          {projects.slice(2).map((project, i) => (
+            <Card
+              key={i}
+              href={project.link}
+              className="relative overflow-hidden group"
+            >
+              <div className="relative z-10 flex flex-col p-6 h-full">
+                <h2 className="text-lg font-semibold text-zinc-100 group-hover:text-white">
+                  {project.title}
+                </h2>
+                <p className="mt-2 text-sm text-zinc-400 group-hover:text-zinc-300">
+                  {project.description}
+                </p>
+                <div className="flex gap-2 mt-4 flex-wrap">
+                  {project.tags.map((tag, i) => (
+                    <span key={i} className="px-2 py-1 text-xs rounded-full bg-zinc-800 text-zinc-300">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                {project.link && (
+                  <div className="flex items-center gap-1 mt-4 text-zinc-400 group-hover:text-zinc-300">
+                    <span className="text-sm">View Project</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </div>
+                )}
+              </div>
+            </Card>
           ))}
         </div>
       </div>
       <Particles className="absolute inset-0 -z-10" quantity={100} />
     </div>
   );
-};
-
-export default ProjectsPage;
+}
