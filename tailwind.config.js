@@ -163,7 +163,21 @@ module.exports = {
 		},
 	},
 	plugins: [
-		require("@tailwindcss/typography"),
-		require("tailwindcss-debug-screens"),
+		function() {
+			try {
+				return require("@tailwindcss/typography");
+			} catch (e) {
+				console.warn("@tailwindcss/typography plugin not found, skipping...");
+				return {};
+			}
+		}(),
+		function() {
+			try {
+				return require("tailwindcss-debug-screens");
+			} catch (e) {
+				console.warn("tailwindcss-debug-screens plugin not found, skipping...");
+				return {};
+			}
+		}(),
 	],
 };
