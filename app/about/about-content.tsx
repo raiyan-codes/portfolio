@@ -110,8 +110,7 @@ const TaekwondoSlideshow = () => {
     { src: "/tkd/group.jpg", alt: "Taekwondo Group Photo" },
     { src: "/tkd/trophy.jpg", alt: "Taekwondo Trophy" },
     { src: "/tkd/kicking.jpg", alt: "Taekwondo Kicking" },
-    { src: "/tkd/sitting.jpg", alt: "Taekwondo Sitting" },
-    { src: "/tkd/shirtless.jpg", alt: "Taekwondo Shirtless" }
+    { src: "/tkd/sitting.jpg", alt: "Taekwondo Sitting" }
   ];
 
   const nextSlide = () => {
